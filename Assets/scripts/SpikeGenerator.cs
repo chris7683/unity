@@ -8,6 +8,8 @@ public class SpikeGenerator : MonoBehaviour
     public float MaxSpeed;
     public float MinSpeed;
     public float spawnInterval = 3f;
+    public float spawnX = 8f;
+    public float groundY = -3.55f;
     
     private float timer;
     public Color[] spikeColors = new Color[] { Color.red, Color.blue };
@@ -15,13 +17,16 @@ public class SpikeGenerator : MonoBehaviour
     void Awake()
     {
         currentSpeed = MinSpeed;
+        // Set position to spawn point
+        transform.position = new Vector3(spawnX, groundY, 0);
         generateSpike();
         timer = spawnInterval;
     }
 
     public void generateSpike()
     {
-        GameObject SpikeIns = Instantiate(spike, transform.position, transform.rotation);
+        Vector3 spawnPos = new Vector3(spawnX, groundY, 0);
+        GameObject SpikeIns = Instantiate(spike, spawnPos, transform.rotation);
         SpikeScript spikeScript = SpikeIns.GetComponent<SpikeScript>();
         spikeScript.spikeGenerator = this;
 

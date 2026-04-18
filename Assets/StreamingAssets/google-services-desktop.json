@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "98190227728",
+    "project_id": "amir2-12fe8",
+    "storage_bucket": "amir2-12fe8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98190227728:ios:b4d141c80a448f04640d95",
+        "android_client_info": {
+          "package_name": "com.chris.spikejump"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU91fWFyekxQgMu4RDxeE1n9cXhml20Xc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

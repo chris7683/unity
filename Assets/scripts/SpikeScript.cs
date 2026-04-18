@@ -31,20 +31,16 @@ public class SpikeScript : MonoBehaviour
         if (spikeGenerator != null)
             transform.Translate(Vector2.left * spikeGenerator.currentSpeed * Time.deltaTime);
 
-        // Once the spike passes the player's X position, check if player jumped over it
         if (!passedPlayer && playerTransform != null)
         {
             if (transform.position.x < playerTransform.position.x)
             {
                 passedPlayer = true;
 
-                // Player successfully jumped over this spike
-                // If the colors DON'T match → Game Over
                 if (player != null && !ColorsMatch(player.currentColor, spikeColor))
-                {
                     GameManager.instance.GameOver();
-                }
-                // If colors match → do nothing, player is safe
+                else
+                    GameManager.instance.AddScore(1);
             }
         }
     }
@@ -52,18 +48,13 @@ public class SpikeScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("nextline"))
-        {
             Destroy(gameObject);
-        }
     }
 
-    // Player physically collides with spike = they didn't jump = Game Over always
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             GameManager.instance.GameOver();
-        }
     }
 
     bool ColorsMatch(Color a, Color b)
